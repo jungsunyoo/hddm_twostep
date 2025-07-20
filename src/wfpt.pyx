@@ -1828,7 +1828,7 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
                       double v, # don't use second stage
                       double sv,
                       double a,
-                      
+                      double a0,
                       double z0, double z1, double z2,
                       double z,
                       double sz,
@@ -1895,6 +1895,8 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
 
     cdef long s_
     cdef long a_
+    cdef long thresh
+    # cdef long a0
     cdef double v_
     cdef double z_
     cdef double t_
@@ -2464,11 +2466,11 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
                     # t_ = ((np.log(ndt_counter_ind[planets[0],0]) + np.log(ndt_counter_ind[planets[1],0]))/2)*beta_ndt + \
                     #      np.log(ndt_counter_set[s1s[i],0])*beta_ndt2 + \
                     #      t
-                    if a0:
-                        a_ = a + a0 * i
+                    if a0 !==0.00:
+                        thresh = a + a0 * i
                     else: 
-                        a_ = a
-                    p = full_pdf(rt, v_, sv, a_, sig,
+                        thresh = a
+                    p = full_pdf(rt, v_, sv, thresh, sig,
                                  sz, t_, st, err, n_st, n_sz, use_adaptive, simps_err)
                     # If one probability = 0, the log sum will be -Inf
                     p = p * (1 - p_outlier) + wp_outlier
