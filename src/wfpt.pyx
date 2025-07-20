@@ -1895,7 +1895,7 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
 
     cdef long s_
     cdef long a_
-    cdef long thresh
+    cdef double thresh
     # cdef long a0
     cdef double v_
     cdef double z_
