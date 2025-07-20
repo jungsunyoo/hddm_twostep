@@ -2466,7 +2466,7 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
                     # t_ = ((np.log(ndt_counter_ind[planets[0],0]) + np.log(ndt_counter_ind[planets[1],0]))/2)*beta_ndt + \
                     #      np.log(ndt_counter_set[s1s[i],0])*beta_ndt2 + \
                     #      t
-                    if a0 !==0.00:
+                    if a0 != 0.00:
                         thresh = a + a0 * i
                     else: 
                         thresh = a
