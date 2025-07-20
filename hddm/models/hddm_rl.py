@@ -791,6 +791,9 @@ class HDDMrl(HDDM):
             elif self.unc_hybrid == 'fourth': # regress both within ndt1
                 wfpt_parents['unc_hybrid'] = 4.00
                 wfpt_parents['w_unc'] = knodes['w_unc_bottom']
+            elif self.unc_hybrid == 'fifth': # super piecemeal model
+                wfpt_parents['unc_hybrid'] = 5.00
+                wfpt_parents['w_unc'] = 0.00 #knodes['w_unc_bottom']                
         else:
             wfpt_parents['unc_hybrid'] = 0.00
             wfpt_parents['w_unc'] = 0.00

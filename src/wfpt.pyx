@@ -2351,7 +2351,7 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
 
                         #     var_tr += var_tr_
                         #     var_tr /= 2
-                        if unc_hybrid == 6.00: # regressing both (additional parameter)
+                        if unc_hybrid == 5.00: # regressing both (additional parameter)
                             alpha_b = alphaf(beta_success)
                             beta_b = betaf(beta_n, beta_success)
                             var_tr = var_beta(alpha_b, beta_b)
