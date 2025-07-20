@@ -2294,79 +2294,79 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
                     #                            betaf(beta_n[planets[1]], beta_success[planets[1]]),
                     #                            moments='mvsk')
                     if beta_ndt != 0.00:
-                        if unc_hybrid == 0.00:
-                            if model_unc_rep == 1: # ind
+                        # if unc_hybrid == 0.00:
+                            # if model_unc_rep == 1: # ind
 
-                                # 1. Get variance of beta (transition)
-                                alpha_b = alphaf(beta_success_ind[planets[0]])
-                                beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
-                                var_tr = var_beta(alpha_b, beta_b)
+                        #         # 1. Get variance of beta (transition)
+                        #         alpha_b = alphaf(beta_success_ind[planets[0]])
+                        #         beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
+                        #         var_tr = var_beta(alpha_b, beta_b)
 
-                                alpha_b = alphaf(beta_success_ind[planets[1]])
-                                beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
-                                var_tr += var_beta(alpha_b, beta_b)
-                                var_tr /= 2
+                        #         alpha_b = alphaf(beta_success_ind[planets[1]])
+                        #         beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
+                        #         var_tr += var_beta(alpha_b, beta_b)
+                        #         var_tr /= 2
 
-                                # 2. Get variance of beta (value)
-                                # alpha_b = alphaf()
+                        #         # 2. Get variance of beta (value)
+                        #         # alpha_b = alphaf()
 
-                            elif model_unc_rep == -1: # set
+                        #     elif model_unc_rep == -1: # set
 
-                                # 1. Get variance of beta (transition)
-                                alpha_b = alphaf(beta_success_set[s1s[i]])
-                                beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
-                                var_tr = var_beta(alpha_b, beta_b)
-                        elif unc_hybrid == 1.00: # bellman ind, uncertainty set
-                            alpha_b = alphaf(beta_success_set[s1s[i]])
-                            beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
+                        #         # 1. Get variance of beta (transition)
+                        #         alpha_b = alphaf(beta_success_set[s1s[i]])
+                        #         beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
+                        #         var_tr = var_beta(alpha_b, beta_b)
+                        # elif unc_hybrid == 1.00: # bellman ind, uncertainty set
+                        #     alpha_b = alphaf(beta_success_set[s1s[i]])
+                        #     beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
+                        #     var_tr = var_beta(alpha_b, beta_b)
+                        # elif unc_hybrid == 2.00: # bellman set, uncertainty ind
+                        #     # 1. Get variance of beta (transition)
+                        #     alpha_b = alphaf(beta_success_ind[planets[0]])
+                        #     beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
+                        #     var_tr = var_beta(alpha_b, beta_b)
+
+                        #     alpha_b = alphaf(beta_success_ind[planets[1]])
+                        #     beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
+                        #     var_tr += var_beta(alpha_b, beta_b)
+                        #     var_tr /= 2
+
+                        #     # 2. Get variance of beta (value)
+                        #     # alpha_b = alphaf()
+                        # elif unc_hybrid == 3.00: # average of set and ind
+                        #     # first, set
+                        #     alpha_b = alphaf(beta_success_set[s1s[i]])
+                        #     beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
+                        #     var_tr = var_beta(alpha_b, beta_b)
+
+                        #     # then, add ind and then take the average
+                        #     alpha_b = alphaf(beta_success_ind[planets[0]])
+                        #     beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
+                        #     var_tr_ = var_beta(alpha_b, beta_b)
+
+                        #     alpha_b = alphaf(beta_success_ind[planets[1]])
+                        #     beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
+                        #     var_tr_ += var_beta(alpha_b, beta_b)
+                        #     var_tr_ /= 2
+
+                        #     var_tr += var_tr_
+                        #     var_tr /= 2
+                        if unc_hybrid == 6.00: # regressing both (additional parameter)
+                            alpha_b = alphaf(beta_success)
+                            beta_b = betaf(beta_n, beta_success)
                             var_tr = var_beta(alpha_b, beta_b)
-                        elif unc_hybrid == 2.00: # bellman set, uncertainty ind
-                            # 1. Get variance of beta (transition)
-                            alpha_b = alphaf(beta_success_ind[planets[0]])
-                            beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
-                            var_tr = var_beta(alpha_b, beta_b)
 
-                            alpha_b = alphaf(beta_success_ind[planets[1]])
-                            beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
-                            var_tr += var_beta(alpha_b, beta_b)
-                            var_tr /= 2
+                            # # then, add ind and then take the average
+                            # alpha_b = alphaf(beta_success_ind[planets[0]])
+                            # beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
+                            # var_tr__ = var_beta(alpha_b, beta_b)
 
-                            # 2. Get variance of beta (value)
-                            # alpha_b = alphaf()
-                        elif unc_hybrid == 3.00: # average of set and ind
-                            # first, set
-                            alpha_b = alphaf(beta_success_set[s1s[i]])
-                            beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
-                            var_tr = var_beta(alpha_b, beta_b)
+                            # alpha_b = alphaf(beta_success_ind[planets[1]])
+                            # beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
+                            # var_tr__ += var_beta(alpha_b, beta_b)
+                            # var_tr__ /= 2
 
-                            # then, add ind and then take the average
-                            alpha_b = alphaf(beta_success_ind[planets[0]])
-                            beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
-                            var_tr_ = var_beta(alpha_b, beta_b)
-
-                            alpha_b = alphaf(beta_success_ind[planets[1]])
-                            beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
-                            var_tr_ += var_beta(alpha_b, beta_b)
-                            var_tr_ /= 2
-
-                            var_tr += var_tr_
-                            var_tr /= 2
-                        elif unc_hybrid == 4.00: # regressing both (additional parameter)
-                            alpha_b = alphaf(beta_success_set[s1s[i]])
-                            beta_b = betaf(beta_n_set[s1s[i]], beta_success_set[s1s[i]])
-                            var_tr_ = var_beta(alpha_b, beta_b)
-
-                            # then, add ind and then take the average
-                            alpha_b = alphaf(beta_success_ind[planets[0]])
-                            beta_b = betaf(beta_n_ind[planets[0]], beta_success_ind[planets[0]])
-                            var_tr__ = var_beta(alpha_b, beta_b)
-
-                            alpha_b = alphaf(beta_success_ind[planets[1]])
-                            beta_b = betaf(beta_n_ind[planets[1]], beta_success_ind[planets[1]])
-                            var_tr__ += var_beta(alpha_b, beta_b)
-                            var_tr__ /= 2
-
-                            var_tr = w_unc_ * var_tr_ + (1-w_unc_) * var_tr__
+                            # var_tr = w_unc_ * var_tr_ + (1-w_unc_) * var_tr__
 
 
 
