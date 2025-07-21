@@ -26,7 +26,7 @@ class HDDMrl(HDDM):
         self.v_reg = kwargs.pop("v_reg", False) # added for regression in two-step task
         self.z_reg = kwargs.pop("z_reg", False)
         self.a_fix = kwargs.pop("a_fix", False)
-        self.a0 = kwargs.pop("a_regress", True)
+        self.a0 = kwargs.pop("a_regress", False)
 
         self.w = kwargs.pop("w", False)
         self.w2 = kwargs.pop("w2", False)
