@@ -685,8 +685,8 @@ class HDDMrl(HDDM):
         wfpt_parents["beta_ndt3"] = knodes["beta_ndt3_bottom"] if self.regress_ndt3 else 0.00
         wfpt_parents["beta_ndt4"] = knodes["beta_ndt4_bottom"] if self.regress_ndt4 else 0.00
 
-        if self.a0: # using boundary regression
-            wfpt_parents["a0"] = knodes["a0_bottom"] if self.a0 else 0.00
+        # if self.a0: # using boundary regression
+        wfpt_parents["a0"] = knodes["a0_bottom"] if self.a0 else 0.00
             
 
         if self.v_reg: # if using v_regression 
