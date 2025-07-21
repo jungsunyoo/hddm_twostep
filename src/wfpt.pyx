@@ -1976,9 +1976,10 @@ def wiener_like_rlddm_super_piecemeal(np.ndarray[double, ndim=1] x1, # 1st-stage
 
     # JY added for uncertainty modeling
 
-    cdef np.ndarray[double, ndim=2] beta_n = np.ones((nstates, 1))
-    cdef np.ndarray[double, ndim=2] beta_success = np.ones((nstates,1))    
-
+    # cdef np.ndarray[double, ndim=2] beta_n = np.ones((nstates, 1))
+    # cdef np.ndarray[double, ndim=2] beta_success = np.ones((nstates,1))    
+    cdef int beta_n
+    cdef int beta_success 
     cdef np.ndarray[double, ndim=1] counter = np.zeros(comb(nstates,2,exact=True))
 
 
