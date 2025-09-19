@@ -1,4 +1,4 @@
-"""
+ """
 .. module:: HDDM
    :platform: Agnostic
    :synopsis: Definition of HDDM models.
